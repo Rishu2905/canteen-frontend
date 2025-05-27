@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
 import './App.css';
 
 
@@ -23,25 +24,27 @@ function App() {
   const addToCart = (item) => {
   setCart([...cart, item]); // adds item to cart
 };
+
   return (
-  <div style={{ padding: '20px' }}>
-    <h1>College Canteen Menu</h1>
-    {Array.isArray(menu) && menu.length > 0 ? (
+    <div>
+      <h1>College Canteen Menu</h1>
+      {Array.isArray(menu) && menu.length > 0 ? (
       <ul>
         {menu.map((item, index) => (
           <li key={index}>
             {item.item} - ₹{item.price}
+
             <button style={{ marginLeft: '10px' }} onClick={() => addToCart(item)}>
             Add to Cart
             </button>
           </li>
         ))}
       </ul>
-    ) : (
+    ): (
       <p>Loading menu...</p>
     )}
     <hr />
-
+  
 <h2>Your Cart</h2>
 
 {cart.length === 0 ? (
@@ -58,6 +61,7 @@ function App() {
   </div>
   
 );
+        
 }
 
 export default App;
