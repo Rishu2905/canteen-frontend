@@ -1,30 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import LandingPage from './components/LandingPage';
+import MainPage from './components/MainPage';
 
 function App() {
-  const [menu, setMenu] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/menu')
-      .then(response => {
-        setMenu(response.data);
-      })
-      .catch(error => {
-        console.error("Error fetching menu:", error);
-      });
-  }, []);
+  const [showMain, setShowMain] = useState(false);
 
   return (
-    <div>
-      <h1>College Canteen Menu</h1>
-      <ul>
-        {menu.map((item, index) => (
-          <li key={index}>
-            {item.item} - ₹{item.price}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {showMain ? (
+        <MainPage />
+      ) : (
+        <LandingPage onEnter={() => setShowMain(true)} />
+      )}
+    </>
   );
 }
 

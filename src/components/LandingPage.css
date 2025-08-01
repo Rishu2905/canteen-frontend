@@ -1,0 +1,70 @@
+/* Already present */
+.landing-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(148, 146, 146);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.curtain {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #000000;
+  transition: transform 2s ease-in-out;
+  z-index: 2;
+}
+
+.left {
+  left: 0;
+  transform: translateX(0%);
+}
+
+.right {
+  right: 0;
+  transform: translateX(0%);
+}
+
+.left.open {
+  transform: translateX(-100%);
+}
+
+.right.open {
+  transform: translateX(100%);
+}
+
+.text-container {
+  z-index: 3;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.text-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.text-container-wrapper {
+  z-index: 3;
+  text-align: center;
+}
+
+.text-line {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.text-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
